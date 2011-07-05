@@ -108,6 +108,22 @@ class Dummyimage
     
     
     /**
+     * Maybe usefull for Debugging
+     *
+     */
+    public function __toString() {
+    
+        $debug = "<hr />";
+        foreach (get_object_vars($this) as $key => $value) {
+            $debug .= $key . ": " . $value . "<br />";        
+        };
+        $debug .= "class: " . get_class() . "<hr />";
+        return $debug;
+        
+    }
+    
+    
+    /**
      * How many Dummy-Images are used on this site?
      *
      */    

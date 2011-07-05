@@ -106,7 +106,7 @@
     
     <hr />
     
-    <pre>Default Settings: <br /><?php var_dump($image); ?></pre>
+    <pre>Debug: <br /><?php echo($image3); ?></pre>
     
 </body>
 </html>
