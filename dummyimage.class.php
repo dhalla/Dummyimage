@@ -25,10 +25,7 @@ class Dummyimage
      * Constructor, overrides Defaults
      *
      */
-    public function __construct($width = false, $height = false, $properties = false) {
-        
-        $this->width    = ($width) ? $width : $this->width;
-        $this->height   = ($height) ? $height : $this->height;
+    public function __construct($properties = false) {
         
         if ($properties) {
             foreach ($properties as $key => $value) {
@@ -60,6 +57,8 @@ class Dummyimage
     
         try {
             switch($property) {
+                case "width"    : $this->width = $value; break;
+                case "height"   : $this->height = $value; break;
                 case "grayscale": $this->grayscale = $value; break;
                 case "dummytext": $this->dummytext = $value; break;
                 case "category": 

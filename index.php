@@ -5,17 +5,19 @@
     // Use default settings
     $image = new Dummyimage();
 
-    // Set properties individually
-    $image2 = new Dummyimage(400,300);
-    $image2->grayscale = true;
-    $image2->category = 'sports';
-    $image2->dummytext = 'Lorem Ipsum';    
+    // Mix up configuration array and properties which are individually set (all optional)
+    $image2 = new Dummyimage(array('width' => 400, 'height' => 250));
+    $image2->grayscale  = true;
+    $image2->category   = 'sports';
+    $image2->dummytext  = 'Lorem Ipsum';         
     
     // Use a configuration array while creating the image
-    $image3 = new Dummyimage(false, 400, array(
-            'category'  => 'nightlife', 
-            //'grayscale' => true,
-            'dummytext' => 'Schnieb schnaaab di schnuub'
+    $image3 = new Dummyimage(array(
+            'category'      => 'nightlife', 
+            'grayscale'     => true,
+            'dummytext'     => 'Schnieb schnaaab di schnuub',
+            'width'         => 150,
+            'height'        => 400
         ));
 
 ?>
