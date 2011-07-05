@@ -1,0 +1,132 @@
+<?php
+
+/**
+ * Dummyimage class.
+ * @see http://lorempixum.com/
+ *
+ */
+class Dummyimage 
+{
+
+
+    const BASE_URL      = 'http://lorempixum.com';
+
+    private $width      = 100;
+    private $height     = 100;
+    private $grayscale  = false;
+    private $dummytext  = false;
+    private $category   = 'city';
+    private $categories = array('abstract', 'food', 'people', 'technics', 'animals', 'nightlife', 'nature', 'transport', 'sports', 'city', 'fashion');
+
+    private static $numImages = 0;
+    
+    
+    /**
+     * Constructor, overrides Defaults
+     *
+     */
+    public function __construct($width = false, $height = false, $properties = false) {
+        
+        $this->width    = ($width) ? $width : $this->width;
+        $this->height   = ($height) ? $height : $this->height;
+        
+        if ($properties) {
+            foreach ($properties as $key => $value) {
+                $this->$key = $value;
+            }        
+        }
+        
+        self::$numImages++;
+        
+    }
+    
+    
+    /**
+     * Magic Getter
+     *
+     */
+    public function __get($property) {     
+    
+        return $this->$property;    
+        
+    }
+    
+
+    /**
+     * Set additional Properties like Grayscale, Dummytext and Category
+     *
+     */
+    public function __set($property, $value) {
+    
+        try {
+            switch($property) {
+                case "grayscale": $this->grayscale = $value; break;
+                case "dummytext": $this->dummytext = $value; break;
+                case "category": 
+                    if (in_array($value, $this->categories)) { 
+                        $this->category = $value;
+                    } else {
+                        throw new Exception('Invalid Category: "'.$value.'". Valid Categories: '.implode(', ', $this->categories));
+                    }
+                break;  
+                default: throw new Exception('Invalid Property: "'.$property.'". Valid Properties: width, height, (bool) grayscale, dummytext, category.'); break;
+            }
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+    
+    }
+    
+    
+    /**
+     * Generate full Image-Tag
+     * 
+     */    
+    public function imageTag($class = false) {
+    
+        $imageTag = '<img src="'.$this->imageSrc().'" alt="Dummyimage" class="'.$class.'" />';
+        return $imageTag;
+        
+    }
+    
+    
+    /**
+     * Generates valid src-Attribute for image-Tag
+     * 
+     */
+    public function imageSrc() {
+        
+        $grayscale = ($this->grayscale) ? '/g' : ''; 
+        $dummytext = ($this->dummytext) ? '/'.$this->dummytext : '';
+
+        $imgSrc =  self::BASE_URL . $grayscale . '/' . $this->width . '/' . $this->height.'/' . $this->category . $dummytext;
+        
+        return $imgSrc; 
+
+    }
+    
+    
+    /**
+     * How many Dummy-Images are used on this site?
+     *
+     */    
+    public static function getNumImages() {
+    
+        return self::$numImages;
+    
+    }
+
+    
+    /**
+     * Destructor, not used so far
+     *
+     */
+    public function __destruct() {
+        // Do nothing
+    }
+    
+
+}
+
+
+?>
