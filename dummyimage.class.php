@@ -21,7 +21,7 @@ class Dummyimage
     private $categories = array('abstract', 'food', 'people', 'technics', 'animals', 'nightlife', 'nature', 'transport', 'sports', 'city', 'fashion');
 
     private static $numImages = 0;
-    
+
     
     /**
      * Constructor, overrides Defaults

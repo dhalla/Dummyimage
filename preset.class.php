@@ -5,7 +5,7 @@
  * @see https://github.com/dhalla/Dummyimage
  *
  */
-class Preset extends Dummyimage 
+class Preset extends Dummyimage
 {
     
 
@@ -13,22 +13,43 @@ class Preset extends Dummyimage
 
 
     /**
+     * Constructor
+     * Simply call the parents' Constructor with Params from Config-File
+     *
+     */
+    public function __construct($preset) {
+    
+        $config = $this->getConfig();
+        parent::__construct($config[$preset]);
+    
+    }
+    
+
+    /**
      * Read configuration File
      *
      */
     private function getConfig() {
     
-        return parse_ini_file(self::CONFIG, true);
+        try {
+            if (file_exists(self::CONFIG)) {
+                return parse_ini_file(self::CONFIG, true);
+            } else {
+                throw new Exception('Invalid Config-File: File "'.self::CONFIG.'" not found.');
+            }
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
     
     }
 
 
     /**
-     * Init-Function
+     * Static Init-Function
      * Generate new Dummyimage from Preset
      *
      */    
-    private function init($preset) {
+    private static function init($preset) {
 
         $config = self::getConfig();
         $img    = new Dummyimage($config[$preset]);

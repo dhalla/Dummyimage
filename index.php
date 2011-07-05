@@ -23,9 +23,13 @@
             'height'        => 400
         ));
         
-    /* USAGE OF CONFIGURABLE PRESETS */
+    /* USAGE OF CONFIGURABLE PRESETS */ 
     
-    // Use "Imageheader"-Preset
+    $imageheader    = new Preset('imageheader');
+    $content_1col   = new Preset('content_1col');    
+    $teaser_sidebar = new Preset('teaser_sidebar');
+    
+    /* Use static calls for presets instead */    
     $imageheader_tag = Preset::getImageTag("imageheader");
     $imageheader_src = Preset::getImageSrc("imageheader");
 
@@ -65,9 +69,24 @@
     <br />
     Src: <?php echo $image3->imageSrc(); ?>    
     <hr />    
-    
-    <!-- Use preconfigured Imagesets -->
 
+    <!-- Use preconfigured Imagesets -->
+    Preset Imageheader: <br /> <?php echo $imageheader->imageTag(); ?>
+    <br />
+    Src: <?php echo $imageheader->imageSrc(); ?>    
+    <hr />
+
+    Preset Content_1col: <br /> <?php echo $content_1col->imageTag(); ?>
+    <br />
+    Src: <?php echo $content_1col->imageSrc(); ?>    
+    <hr />
+
+    Preset Teaser_Sidebar: <br /> <?php echo $teaser_sidebar->imageTag(); ?>
+    <br />
+    Src: <?php echo $teaser_sidebar->ImageSrc(); ?>    
+    <hr />
+    
+    <!-- Use preconfigured Imagesets with static calls -->
     Preset Imageheader: <br /> <?php echo $imageheader_tag; ?>
     <br />
     Src: <?php echo $imageheader_src; ?>    
