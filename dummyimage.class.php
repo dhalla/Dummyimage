@@ -2,7 +2,9 @@
 
 /**
  * Dummyimage class.
+ *
  * @see http://lorempixum.com/
+ * @author Daniel Haller daniel_haller at gmx dot de
  *
  */
 class Dummyimage 
@@ -83,7 +85,7 @@ class Dummyimage
      */    
     public function imageTag($class = false) {
     
-        $imageTag = '<img src="'.$this->imageSrc().'" alt="Dummyimage" class="'.$class.'" />';
+        $imageTag = '<img src="'.$this->imageSrc().'" alt="Dummyimage" class="'.$class.'" width="'.$this->width.'" height="'.$this->height.'" />';
         return $imageTag;
         
     }

@@ -1,6 +1,9 @@
 <?php
 
-    require('dummyimage.class.php');
+    require_once('dummyimage.class.php');
+    require_once('preset.class.php');
+    
+    /* BASIC USAGE OF DUMMYIMAGE-CLASS */
     
     // Use default settings
     $image = new Dummyimage();
@@ -19,6 +22,18 @@
             'width'         => 150,
             'height'        => 400
         ));
+        
+    /* USAGE OF CONFIGURABLE PRESETS */
+    
+    // Use "Imageheader"-Preset
+    $imageheader_tag = Preset::getImageTag("imageheader");
+    $imageheader_src = Preset::getImageSrc("imageheader");
+
+    $content_1col_tag = Preset::getImageTag("content_1col");
+    $content_1col_src = Preset::getImageSrc("content_1col");
+
+    $teaser_sidebar_tag = Preset::getImageTag("teaser_sidebar");
+    $teaser_sidebar_src = Preset::getImageSrc("teaser_sidebar");
 
 ?>
 
@@ -34,20 +49,39 @@
 </head>
 <body>
 
-    #1: <br /> <?php echo $image->imageTag(); ?>
+    <!-- Simple Usage of Dummyimage-Objects -->
+    
+    Image #1: <br /> <?php echo $image->imageTag(); ?>
     <br />
     Src: <?php echo $image->imageSrc(); ?>
     <hr />
     
-    #2: <br /> <?php echo $image2->imageTag('dummyimage'); ?>
+    Image #2: <br /> <?php echo $image2->imageTag('dummyimage'); ?>
     <br />
     Src: <?php echo $image2->imageSrc(); ?>    
     <hr />
     
-    #3: <br /> <?php echo $image3->imageTag(); ?>
+    Image #3: <br /> <?php echo $image3->imageTag(); ?>
     <br />
     Src: <?php echo $image3->imageSrc(); ?>    
     <hr />    
+    
+    <!-- Use preconfigured Imagesets -->
+
+    Preset Imageheader: <br /> <?php echo $imageheader_tag; ?>
+    <br />
+    Src: <?php echo $imageheader_src; ?>    
+    <hr />
+
+    Preset Content_1col: <br /> <?php echo $content_1col_tag; ?>
+    <br />
+    Src: <?php echo $content_1col_src; ?>    
+    <hr />
+
+    Preset Teaser_Sidebar: <br /> <?php echo $teaser_sidebar_tag; ?>
+    <br />
+    Src: <?php echo $teaser_sidebar_src; ?>    
+    <hr />
     
     Images used: <?php echo Dummyimage::getNumImages(); ?>
     
