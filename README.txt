@@ -43,7 +43,7 @@ $content_2col   = new Preset('content_2col');
 
 And in your templates:
 
-<?php echo $image->content_1col(); ?>
-<?php echo $image->content_2col(); ?>
+<?php echo $content_1col->imageTag(); ?>
+<?php echo $content_2col->imageTag(); ?>
 
 For more information see the index.php, which is full with examples.
