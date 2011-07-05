@@ -1,7 +1,7 @@
 Dummyimage-Class
 =================
 
-This little script allows you to use the LoremPixum-API ([http://lorempixum.com/]) from the Backend and create Objects for your Dummyimages like this:
+This little script allows you to use the LoremPixum-API (http://lorempixum.com/) from the Backend and create Objects for your Dummyimages like this:
 
 $image = new Dummyimage(array(
     'category'      => 'nightlife', 
